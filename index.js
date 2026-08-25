@@ -36,6 +36,10 @@ app.get('/', function(req, res) {
 });
 
 
+app.get('/health', function(req, res) {
+    res.json({ status: 'ok', bot: 'WARRIORS Bot', time: new Date().toISOString() });
+});
+
 app.listen(port);
 console.log('𝐌𝐚́𝐲 𝐜𝐡𝐮̉ 𝐛𝐚̆́𝐭 𝐝𝐚̂̀𝐮 𝐭𝐚̣𝐢 http://localhost:' + port,"𝐯𝐚̀𝐨 𝐥𝐮́𝐜:" + gio,"\n\n");
 
