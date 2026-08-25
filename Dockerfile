@@ -1,4 +1,4 @@
-FROM node:20-bookworm-slim
+FROM node:22-bookworm
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -9,7 +9,12 @@ RUN apt-get update && \
 
 WORKDIR /app
 COPY package.json package-lock.json ./
+
+# Remove prebuilt native modules and rebuild from source
 RUN npm ci --omit=dev || npm install --omit=dev
+RUN npm rebuild sqlite3 --build-from-source 2>/dev/null || true
+RUN npm rebuild better-sqlite3 --build-from-source 2>/dev/null || true
+RUN npm rebuild canvas --build-from-source 2>/dev/null || true
 
 COPY . .
 ENV NODE_ENV=production
