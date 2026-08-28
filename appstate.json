@@ -7,7 +7,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "datr",
@@ -17,7 +18,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "sb",
@@ -27,7 +29,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "locale",
@@ -37,7 +40,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "pas",
@@ -47,7 +51,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "vpd",
@@ -57,7 +62,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "dpr",
@@ -67,7 +73,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "wd",
@@ -77,7 +84,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "ps_l",
@@ -87,7 +95,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "ps_n",
@@ -97,7 +106,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "wl_cbv",
@@ -107,7 +117,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "c_user",
@@ -117,7 +128,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "oo",
@@ -127,7 +139,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "xs",
@@ -137,7 +150,8 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   },
   {
     "key": "presence",
@@ -147,6 +161,7 @@
     "hostOnly": false,
     "httpOnly": false,
     "secure": true,
-    "session": true
+    "session": false,
+    "expires": "Sat, 01 Jan 2030 00:00:00 GMT"
   }
 ]
