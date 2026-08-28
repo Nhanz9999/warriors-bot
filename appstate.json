@@ -1,7 +1,7 @@
 [
   {
     "key": "dbln",
-    "value": "%7B%2261593548649498%22%3A%22YoEVtt0j%22%7D",
+    "value": "%7B%2261593548649498%22%3A%22rl9k6tqD%22%7D",
     "domain": "facebook.com",
     "path": "/login/device-based/",
     "hostOnly": false,
@@ -120,8 +120,8 @@
     "session": true
   },
   {
-    "key": "fr",
-    "value": "1m8oc0I8hjpPzsBmn.AWd74gfznyckgWasvnaUIzFRUd6LOLph8Z9Yq2GtcTucLWQ7Gpg.BqjUCx..AAA.0.0.BqjUCx.AWewpQIioihMR9JToPx9pLBG80I",
+    "key": "oo",
+    "value": "v1%7C3%3A1787927150",
     "domain": "facebook.com",
     "path": "/",
     "hostOnly": false,
@@ -131,7 +131,7 @@
   },
   {
     "key": "xs",
-    "value": "30%3AV24ZQCftTOCfmA%3A2%3A1787642030%3A-1%3A-1%3A%3AAcxAyh_2sQP0H7JGF4jvpS6hylwHLTNRriCX_cTE6w",
+    "value": "30%3ASTIVDGoAMnc-jw%3A2%3A1787927148%3A-1%3A-1%3A%3AAczpgUglI3w3_FfS55YClP_YtOoCUPcvwpwfY_MtKQ",
     "domain": "facebook.com",
     "path": "/",
     "hostOnly": false,
@@ -141,7 +141,7 @@
   },
   {
     "key": "presence",
-    "value": "C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1787642039503%2C%22v%22%3A1%7D",
+    "value": "C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1787927156043%2C%22v%22%3A1%7D",
     "domain": "facebook.com",
     "path": "/",
     "hostOnly": false,
