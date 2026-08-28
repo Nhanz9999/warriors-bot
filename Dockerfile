@@ -1,8 +1,6 @@
 FROM node:22-slim
 
-ARG CACHE_BUST=2
-RUN echo "Rebuilding: $(date)"
-
+# Force rebuild 2026-08-28-22
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       ca-certificates ffmpeg python3 make g++ \
@@ -15,6 +13,9 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN rm -rf node_modules && npm install --build-from-source
 COPY . .
+
+# Verify encrypt feature is disabled
+RUN node -e "const d=JSON.parse(require('fs').readFileSync('FastConfigFca.json'));console.log('EncryptFeature:',d.EncryptFeature)"
 
 ENV NODE_ENV=production
 ENV PORT=8080
