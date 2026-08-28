@@ -1,6 +1,6 @@
 FROM node:22-slim
 
-ARG CACHE_BUST=1
+ARG CACHE_BUST=2
 RUN echo "Rebuilding: $(date)"
 
 RUN apt-get update && \
@@ -14,19 +14,7 @@ RUN apt-get update && \
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN rm -rf node_modules && npm install --build-from-source
-
 COPY . .
-
-# Force EncryptFeature to false at build time
-RUN node -e "
-const fs = require('fs');
-const f = '/app/FastConfigFca.json';
-const d = JSON.parse(fs.readFileSync(f));
-d.EncryptFeature = false;
-d.AutoLogin = false;
-fs.writeFileSync(f, JSON.stringify(d, null, 2));
-console.log('EncryptFeature:', d.EncryptFeature);
-"
 
 ENV NODE_ENV=production
 ENV PORT=8080
