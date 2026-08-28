@@ -1,6 +1,6 @@
 FROM node:22-slim
 
-# Force rebuild 2026-08-28-22
+# This build ID forces Docker to invalidate cache: BUILD-2026-08-28T2200
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       ca-certificates ffmpeg python3 make g++ \
@@ -12,10 +12,10 @@ RUN apt-get update && \
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN rm -rf node_modules && npm install --build-from-source
+# Use a unique comment to bust cache: deploy-$(date +%s)
 COPY . .
-
-# Verify encrypt feature is disabled
-RUN node -e "const d=JSON.parse(require('fs').readFileSync('FastConfigFca.json'));console.log('EncryptFeature:',d.EncryptFeature)"
+# Verify
+RUN node -e "const f=JSON.parse(require('fs').readFileSync('FastConfigFca.json')); console.log('EF:',f.EncryptFeature)"
 
 ENV NODE_ENV=production
 ENV PORT=8080
