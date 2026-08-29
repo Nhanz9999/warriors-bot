@@ -162,10 +162,25 @@ async function calculateLeaderboard(matchIds) {
       continue;
     }
 
+    if (!ranks.length) {
+      failedMatches.push(String(matchId));
+      continue;
+    }
+
+    // Booyah thuộc về team có điểm số cao nhất trong trận
+    let booyahIndex = 0;
+    let highestScore = -1;
+    ranks.forEach((teamResult, rankIndex) => {
+      const score = Number(teamResult.score || 0);
+      if (score > highestScore) {
+        highestScore = score;
+        booyahIndex = rankIndex;
+      }
+    });
+
     ranks.forEach((teamResult, rankIndex) => {
       const members = (teamResult.accountNames || []).map(String);
       if (!members.length) return;
-      const memberSet = new Set(members);
       let matchedTeamId;
 
       for (const [teamId, team] of allTeams.entries()) {
@@ -185,7 +200,7 @@ async function calculateLeaderboard(matchIds) {
       team.points += Number(teamResult.score || 0);
       team.kills += Number(teamResult.kill || 0);
       team.matches += 1;
-      if (rankIndex === 0) team.booyah += 1;
+      if (rankIndex === booyahIndex) team.booyah += 1;
 
       members.forEach(member => {
         team.players.set(member, (team.players.get(member) || 0) + 1);
@@ -210,7 +225,7 @@ async function calculateLeaderboard(matchIds) {
       matches: team.matches,
       members: [...team.players.keys()].join(' / ')
     };
-  }).sort((first, second) => second.points - first.points || second.kills - first.kills || second.matches - first.matches);
+  }).sort((first, second) => second.points - first.points || second.booyah - first.booyah || second.kills - first.kills || second.matches - first.matches);
 
   return {
     leaderboard: leaderboard.slice(0, 12),
