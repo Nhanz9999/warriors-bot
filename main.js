@@ -58,7 +58,8 @@ global.data = new Object({
     threadAllowNSFW: new Array(),
     allUserID: new Array(),
     allCurrenciesID: new Array(),
-    allThreadID: new Array()
+    allThreadID: new Array(),
+    recentMessages: new Map()
 });
 
 global.utils = require("./utils");

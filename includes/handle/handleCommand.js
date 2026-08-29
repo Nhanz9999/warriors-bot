@@ -14,6 +14,16 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
          const { commands, cooldowns } = global.client;
          var { body, senderID, threadID, messageID } = event;
          var senderID = String(senderID),threadID = String(threadID);
+         // Chống trùng: cùng 1 tin nhắn được giao 2 lần (MQTT duplicate) chỉ xử lý 1 lần
+         if (!global.data.recentMessages) global.data.recentMessages = new Map();
+         const _msgKey = threadID + '|' + senderID + '|' + messageID;
+         const _handledAt = global.data.recentMessages.get(_msgKey);
+         if (_handledAt && (dateNow - _handledAt) < 15000) return;
+         global.data.recentMessages.set(_msgKey, dateNow);
+         if (global.data.recentMessages.size > 500) {
+           const _now = Date.now();
+           for (const [_k, _t] of global.data.recentMessages) if (_now - _t > 60000) global.data.recentMessages.delete(_k);
+         }
          const threadSetting = threadData.get(threadID) || {}
          const prefixRegex = new RegExp(`^(<@!?${senderID}>|${escapeRegex((threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : PREFIX)})\\s*`);
          if (!prefixRegex.test(body)) return;

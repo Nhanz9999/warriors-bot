@@ -1,1 +1,6 @@
 SyntheticDatabase.sqlite
+appstate.json
+ffcookies.json
+ff-cookie.json
+fbstate*.json
+lib/fca-auto/Extra/Src/appstate.json
