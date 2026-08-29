@@ -1,0 +1,4 @@
+node_modules
+.git
+Horizon_Database
+*.log

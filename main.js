@@ -129,9 +129,17 @@ global.getText = function (...args) {
     return text;
 }
 
+var appState;
+var appStateFile = resolve(join(global.client.mainPath, global.config.APPSTATEPATH || "appstate.json"));
+// Ưu tiên biến môi trường APPSTATE (JSON) nếu có -> tránh lộ cookie lên GitHub/image
 try {
-    var appStateFile = resolve(join(global.client.mainPath, global.config.APPSTATEPATH || "appstate.json"));
-    var appState = require(appStateFile);
+    if (process.env.APPSTATE && process.env.APPSTATE.length > 20) {
+        appState = JSON.parse(process.env.APPSTATE);
+    } else if (existsSync(appStateFile)) {
+        appState = JSON.parse(readFileSync(appStateFile, 'utf8'));
+    } else {
+        throw new Error('no appstate');
+    }
 }
 catch { return logger.loader(global.getText("mirai", "notFoundPathAppstate"), "error") }
 
