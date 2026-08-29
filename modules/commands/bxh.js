@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports.config = {
   name: "bxh",
-  version: "1.0.0",
+  version: "2.0.0",
   hasPermssion: 0,
   credits: "Nhanz",
   description: "Tính bảng xếp hạng từ các trận đã check",
@@ -46,16 +46,11 @@ module.exports.run = async function({ api, event, args }) {
       outputFile
     );
 
-    const summary = result.leaderboard.map((team, index) =>
-      `#${index + 1} ${team.team_name} | K:${team.kills} B:${team.booyah} PTS:${team.points}`
-    ).join("\n");
-
+    const shortNote = failedNote(result.failedMatches);
     return api.sendMessage({
       body: [
         `WARRIORS CUSTOM — BXH ${session.date}`,
-        failedNote(result.failedMatches),
-        "",
-        summary
+        shortNote
       ].filter(Boolean).join("\n"),
       attachment: fs.createReadStream(outputFile)
     }, threadID, async () => {
