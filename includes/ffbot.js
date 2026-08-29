@@ -167,17 +167,6 @@ async function calculateLeaderboard(matchIds) {
       continue;
     }
 
-    // Booyah thuộc về team có điểm số cao nhất trong trận
-    let booyahIndex = 0;
-    let highestScore = -1;
-    ranks.forEach((teamResult, rankIndex) => {
-      const score = Number(teamResult.score || 0);
-      if (score > highestScore) {
-        highestScore = score;
-        booyahIndex = rankIndex;
-      }
-    });
-
     ranks.forEach((teamResult, rankIndex) => {
       const members = (teamResult.accountNames || []).map(String);
       if (!members.length) return;
@@ -200,7 +189,7 @@ async function calculateLeaderboard(matchIds) {
       team.points += Number(teamResult.score || 0);
       team.kills += Number(teamResult.kill || 0);
       team.matches += 1;
-      if (rankIndex === booyahIndex) team.booyah += 1;
+      team.booyah += Number(teamResult.booyah || 0);
 
       members.forEach(member => {
         team.players.set(member, (team.players.get(member) || 0) + 1);
